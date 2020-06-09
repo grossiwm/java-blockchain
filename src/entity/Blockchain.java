@@ -12,6 +12,24 @@ public class Blockchain {
         this.chain.add(generateGenesis());
     }
 
+    public boolean isChainValid() {
+
+        for (int i = 1; i < this.chain.size(); i++) {
+            Block currentBlock = this.chain.get(i);
+            Block previousBlock = this.chain.get(i - 1);
+
+            if (
+                    !currentBlock.getHash()
+                            .equals(currentBlock.calculateHash()) || !currentBlock.getPreviousHash()
+                            .equals(previousBlock.getHash())
+            ) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public void addBlock(Block block) {
         block.setIndex(this.getLatestBlock().getIndex() + 1);
         block.setPreviousHash(this.getLatestBlock().getHash());
@@ -39,5 +57,6 @@ public class Blockchain {
         genesisData.put("genesis", true);
         return new Block(0, genesisData, "0");
     }
+
 
 }

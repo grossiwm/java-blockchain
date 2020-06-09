@@ -18,5 +18,7 @@ public class Main {
         blockchain.addBlock(new Block(data2));
 
         System.out.println(blockchain.toString());
+        System.out.println(blockchain.isChainValid());
+
     }
 }
