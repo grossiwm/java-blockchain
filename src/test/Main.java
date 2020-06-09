@@ -17,8 +17,15 @@ public class Main {
         blockchain.addBlock(new Block(data1));
         blockchain.addBlock(new Block(data2));
 
-        System.out.println(blockchain.toString());
+//        System.out.println(blockchain.toString());
         System.out.println(blockchain.isChainValid());
+
+        HashMap<String, Object> changedData1 = new HashMap<String, Object>();
+        changedData1.put("amount", 199);
+
+        blockchain.getChain().get(1).setData(changedData1);
+
+        System.out.println(blockchain.isChainValid());;
 
     }
 }

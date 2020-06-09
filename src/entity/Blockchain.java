@@ -22,12 +22,17 @@ public class Blockchain {
                     !currentBlock.getHash()
                             .equals(currentBlock.calculateHash()) || !currentBlock.getPreviousHash()
                             .equals(previousBlock.getHash())
-            ) {
+            )
+            {
                 return false;
             }
         }
 
         return true;
+    }
+
+    public ArrayList<Block> getChain() {
+        return this.chain;
     }
 
     public void addBlock(Block block) {
